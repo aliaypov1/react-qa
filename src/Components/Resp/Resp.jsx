@@ -1,13 +1,15 @@
 import React from "react";
 import Content from "../Content/Content";
-const Resp = ({ repos, loading}) => {
+const Resp = ({ repository, loading}) => {
+    
     if (loading) {
         return <div className="loader"></div>
     }
+   
     return (
         
             <ul>
-               {repos.map(item => (
+               {repository.map(item => (
                 <div className="content">
                     <nav>
                     <img src={item.owner.avatar_url} width='80px' height='40px' alt="" />
