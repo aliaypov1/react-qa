@@ -2,7 +2,7 @@ const Header = () => {
     return(
         <>
         <header className="header">
-            <a href="#" className="header__logo">Dash-Board</a>
+            <a href="#" className="header__logo"><i class="fa-brands fa-github"></i> Dash-Board</a>
             <nav>
                 <a href="#" className="header__link">Home</a>
                 <a href="#" className="header__link">About</a>

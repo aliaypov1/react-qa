@@ -4,6 +4,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
 a{
     color: inherit;
     text-decoration: none;
@@ -13,6 +16,17 @@ button{
     background: none;
     border: none;
 }
+button:hover{
+    transform: translateY(5px);
+    transition: all .3s;
+}button:active{
+    transform: translateY(9px);
+    transition: all .3s;
+}
 body{
     font-family: 'Montserrat', sans-serif;
 }
+li{
+    list-style: none;
+}
+

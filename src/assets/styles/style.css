@@ -6,11 +6,13 @@
     --light-:#FFF;
     --danger-:#d90d0d;
     --primary-:#0d5bd9;
-    --success-:#11e023;
+    --success-:#0eb21b;
 
 }
+
+  
 .container{
-    max-width: 1220px;
+    max-width: 1320px;
     padding: 40px 20px;
     margin: 0 auto;
     border: 2px solid black;
@@ -19,6 +21,9 @@
 }
 
 .header{
+    position: sticky;
+    top: 0;
+    left: 0;
     background-color: var(--dark-) ;
     padding: 20px 40px;
     display: flex;
@@ -57,8 +62,17 @@
   
    
 }
-.resp__title{
-    font-size: 25px;
+.desc{
+   display: grid;
+   grid-template-columns: 1fr 1fr .3fr .3fr;
+   width: 800px;
+}
+.desc__stars{
+    color: gold;
+}
+.desc__title{
+    font-size: 18px;
+    font-weight: 700;
 
 }
 .content__title{
@@ -69,9 +83,7 @@
     display: flex;
     column-gap: 12px;
 }
-li{
-    list-style: none;
-}
+
 .pagination__button{
     padding: 15px 25px;
     background-color: var(--primary-);
@@ -79,3 +91,69 @@ li{
     border-radius: 8px;
     font-size: 23px;
 }
+.wrapper{
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    align-items: center;
+    padding: 30px 0;
+}
+.get-btn{
+    padding: 12px 40px;
+    background-color: var(--success-);
+    color: var(--light-);
+    font-size: 24px;
+    border-radius: 16px;
+}
+.seacrh-input{
+    width: 220px;
+    height: 45px;
+    border: 2px solid black;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 19px;
+}
+::-webkit-input-placeholder{
+    text-align: center;
+    color: #003a98;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.loader {
+    border: 4px solid rgba(185, 8, 244, 0.31);
+    border-left-color: transparent;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  
+  .loader {
+    border: 4px solid rgba(185, 8, 244, 0.385);
+    border-left-color: transparent;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .loader {
+    border: 4px solid rgba(185, 8, 244, 0.278);
+    border-left-color: transparent;
+    width: 36px;
+    height: 36px;
+    animation: spin89345 1s linear infinite;
+  }
+  
+  @keyframes spin89345 {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .footer{
+    padding: 20px 40px ;
+    background-color: var(--dark-);
+    margin-top: 200px;
+    color: var(--light-);
+  }

@@ -5,6 +5,7 @@ import './assets/styles/style.css'
 import './assets/styles/reset.css'
 import Resp from "./Components/Resp/Resp";
 import Pagination from "./Components/Pagination/Pagination";
+import Footer from "./Components/Footer/Footer";
 const App = () =>{
   return(
     <>
