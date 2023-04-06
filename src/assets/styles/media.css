@@ -1,0 +1,38 @@
+@media(max-width:950px) {
+
+    .wrapper {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+}
+
+@media(max-width:768px) {
+    .content__text {
+        font-size: 18px;
+    }
+
+    .header__link {
+        font-size: 15px;
+    }
+
+    .resp__title {
+        font-size: 13px;
+    }
+
+    .desc {
+        font-size: 13px;
+    }
+
+    .img {
+        width: 60px;
+    }
+}
+
+@media(max-width:560px) {
+    .desc {
+        display: flex;
+        flex-direction: column;
+
+    }
+}
