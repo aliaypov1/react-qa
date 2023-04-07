@@ -36,7 +36,7 @@ const Create =({repository, loading})=>{
                   
                         </div>
                         <div style={styles} className="text">
-                        <p>ID : {item.id}</p>
+                        <a className="link" target="_blanck" href={item.html_url}>{item.owner.login}</a>
                         <p>lang : {item.language}</p>
                         <p>created_at : {item.created_at}</p> 
                         <p>updated_at : {item.updated_at}</p>

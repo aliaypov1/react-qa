@@ -82,7 +82,7 @@ const About = () => {
                 <h1 id="start" className="content__title">Get a Repository</h1>
                 <div className="wrapper">
                     <input className="seacrh-input" type="text" placeholder="RepositoryName" onChange={e =>getData( setInput(e.target.value))} />
-                    <button className="get-btn" onClick={() => getData()}>Search</button>
+                    {/* <button className="get-btn" onClick={() => getData()}>Search</button> */}
                     <button className="get-btn" onClick={() => {
                         setLoading(true)
                         sort()

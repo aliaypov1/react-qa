@@ -27,12 +27,23 @@
     .img {
         width: 60px;
     }
+   
 }
 
-@media(max-width:560px) {
+@media(max-width:570px) {
     .desc {
         display: flex;
         flex-direction: column;
 
+    }
+    .header__link{
+        display: none;
+
+    }
+    .burger{
+        display: block;
+    }
+    .footer{
+        flex-direction: column;
     }
 }
