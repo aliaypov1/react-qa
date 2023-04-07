@@ -15,15 +15,13 @@ const Content = () => {
    
 
     const getRepos = async () => {
-        try {
+       
             setLoading(true)
             const res = await axios.get(`https://api.github.com/users/${searchName}/repos?per_page=100`)
             setRepository(res.data)
             setLoading(false)
-        } catch (e) {
-            alert('пользователь не найден')
-            setLoading(false)
-        }
+       
+        
     }
  
 
@@ -78,7 +76,7 @@ const Content = () => {
                 ))}
                 <h1 id="start" className="content__title">Get a User Repository</h1>
                 <div className="wrapper">
-                    <input className="seacrh-input" placeholder="userName" type="text" onChange={e => setInput(e.target.value)} />
+                    <input className="seacrh-input" placeholder="userName" type="text" onChange={e => getRepos( setInput(e.target.value))} />
                     <button className="get-btn" onClick={getRepos}>Search</button>
                     <button className="get-btn" onClick={() => {
                         setLoading(true)

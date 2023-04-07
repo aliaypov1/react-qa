@@ -3,10 +3,9 @@ import { useState } from "react";
 import Header from "../Header/Header";
 import Create from "../Create/Create";
 import Pagination from "../Pagination/Pagination";
-import { json } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
-const About = ({ loadings }) => {
+const About = () => {
     const [repository, setRepository] = useState([])
     const [loading, setLoading] = useState(false)
     const [currentpage, setCurrentPage] = useState(1)
@@ -82,7 +81,7 @@ const About = ({ loadings }) => {
             <div className="container-2">
                 <h1 id="start" className="content__title">Get a Repository</h1>
                 <div className="wrapper">
-                    <input className="seacrh-input" type="text" placeholder="RepositoryName" onChange={e => setInput(e.target.value)} />
+                    <input className="seacrh-input" type="text" placeholder="RepositoryName" onChange={e =>getData( setInput(e.target.value))} />
                     <button className="get-btn" onClick={() => getData()}>Search</button>
                     <button className="get-btn" onClick={() => {
                         setLoading(true)
