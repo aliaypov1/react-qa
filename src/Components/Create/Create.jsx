@@ -18,7 +18,7 @@ const Create =({repository, loading})=>{
             //    .sort((a,b)=> b.stargazers_count > a.stargazers_count ? 1 : -1)
                .map(item =>(
                     
-                    <li item={item}>
+                    <li key={item.id}>
                         <div className="content">
                     <nav>
                     <img src={item.owner.avatar_url} width='80px' height='40px' alt="" />

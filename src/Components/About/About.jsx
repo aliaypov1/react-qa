@@ -18,7 +18,7 @@ const About = () => {
         setRepository(res.data.items)
         setLoading(false)
     }
-
+    
     
 
     const lastReposIndex = currentpage * reposPage
