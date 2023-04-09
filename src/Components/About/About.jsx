@@ -8,23 +8,42 @@ import Footer from "../Footer/Footer";
 const About = () => {
     const [repository, setRepository] = useState([])
     const [loading, setLoading] = useState(false)
+    const [loader, setLoader] = useState(false)
     const [currentpage, setCurrentPage] = useState(1)
     const [reposPage] = useState(10)
     const [input, setInput] = useState('')
     const repos = input
    
+useEffect(()=>{
+    if(input === ''){
+        const getTopRepos = async() =>{
+            const res = await axios.get('https://api.github.com/search/repositories?q=react&sort=stars&per_page=10')
+            setRepository(res.data.items)
+        }
+        getTopRepos()
+    }else{
+        const getData = async (a, b) => {
+       
+            setLoading(true)
+            const res = await axios.get(`https://api.github.com/search/repositories?q=${repos}&per_page=100`,{
+                headers:{
+                    'Accept': 'application/vnd.github.text-match+json',
+                    
+                }
+            }
+               
+            )
+            setRepository(res.data.items)
+            setLoading(false)
+        }
+        getData()
+    }
+},[input])
+
     const API_TOKEN = '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'
     localStorage.setItem('KEYS',API_TOKEN)
-    const token = localStorage.getItem('KEYS') 
-    const getData = async (a, b) => {
-       
-        setLoading(true)
-        const res = await axios.get(`https://api.github.com/search/repositories?q=${repos}&per_page=100`
-           
-        )
-        setRepository(res.data.items)
-        setLoading(false)
-    }
+    const token = localStorage.getItem('KEYS')
+  
     useEffect(()=>{
         if(input === ''){
             setLoading(true)
@@ -68,7 +87,7 @@ const About = () => {
                 <h1 id="start" className="content__title">Get a Repository</h1>
                 <div className="wrapper">
                     <input className="seacrh-input"  type="text" placeholder="RepositoryName" onChange={e =>  setInput(e.target.value)} />
-                    <button className="get-btn" onClick={() => getData()}>Search</button>
+                    {/* <button className="get-btn" onClick={() => getData()}>Search</button> */}
                     <button className="get-btn" onClick={() => {
                         setLoading(true)
                         sort()
@@ -79,6 +98,7 @@ const About = () => {
                 </div>
                 
                 <Create repository={currentRepos} loading={loading} />
+                
 
                 <br />
                 <br />
