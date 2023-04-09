@@ -16,18 +16,24 @@ const About = () => {
    
 useEffect(()=>{
     if(input === ''){
+        setLoading(false)
+        
         const getTopRepos = async() =>{
-            const res = await axios.get('https://api.github.com/search/repositories?q=react&sort=stars&per_page=10')
+           
+            const res = await axios.get('https://api.github.com/search/repositories?q=stars:%3E1&sort=stars&order=desc&per_page=10')
             setRepository(res.data.items)
+          
         }
         getTopRepos()
+        
+        
     }else{
         const getData = async (a, b) => {
        
             setLoading(true)
             const res = await axios.get(`https://api.github.com/search/repositories?q=${repos}&per_page=100`,{
                 headers:{
-                    'Accept': 'application/vnd.github.text-match+json',
+                    'Accept': 'application/vnd.github.v3+json',
                     
                 }
             }
@@ -44,15 +50,7 @@ useEffect(()=>{
     localStorage.setItem('KEYS',API_TOKEN)
     const token = localStorage.getItem('KEYS')
   
-    useEffect(()=>{
-        if(input === ''){
-            setLoading(true)
-            
-            setLoading(false)
-            
-        }
-
-    },[input])
+  
     
 
     const lastReposIndex = currentpage * reposPage
