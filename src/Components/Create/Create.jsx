@@ -14,9 +14,7 @@ const Create =({repository, loading})=>{
         <ul>
             {
                 
-               repository
-            //    .sort((a,b)=> b.stargazers_count > a.stargazers_count ? 1 : -1)
-               .map(item =>(
+               repository.map(item =>(
                     
                     <li key={item.id}>
                         <div className="content">

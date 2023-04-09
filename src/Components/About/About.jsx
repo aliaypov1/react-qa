@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import Create from "../Create/Create";
 import Pagination from "../Pagination/Pagination";
@@ -12,13 +12,28 @@ const About = () => {
     const [reposPage] = useState(10)
     const [input, setInput] = useState('')
     const repos = input
+   
+    const API_TOKEN = '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'
+    localStorage.setItem('KEYS',API_TOKEN)
+    const token = localStorage.getItem('KEYS') 
     const getData = async (a, b) => {
+       
         setLoading(true)
-        const res = await axios.get(`https://api.github.com/search/repositories?q=${repos}&per_page=100`)
+        const res = await axios.get(`https://api.github.com/search/repositories?q=${repos}&per_page=100`
+           
+        )
         setRepository(res.data.items)
         setLoading(false)
     }
-    
+    useEffect(()=>{
+        if(input === ''){
+            setLoading(true)
+            
+            setLoading(false)
+            
+        }
+
+    },[input])
     
 
     const lastReposIndex = currentpage * reposPage
@@ -27,49 +42,20 @@ const About = () => {
     const paginate = pageNumber => setCurrentPage(pageNumber)
     const sort = () => {
         return (
-            <>
-                <ul>
+           <>
                     {
 
                         repository
                             .sort((a, b) => b.stargazers_count > a.stargazers_count ? 1 : -1)
-                            .map(item => (
-
-                                <li item={item}>
-                                    <div className="content">
-                                        <nav>
-                                            <img src={item.owner.avatar_url} width='80px' height='40px' alt="" />
-                                        </nav>
-                                        <div className="desc">
-                                            <a className="desc__title" target="_blanck">{item.full_name} </a>
-                                            <p>{item.pushed_at} - last commit</p>
-                                            <p className="desc__stars">{item.stargazers_count} <i className="fa-solid fa-star"></i></p>
-
-                                            <a href={item.html_url} className="resp__title" target="_blank">перейти на репозиторий</a>
-                                            <a >Details</a>
-                                            <br />
-
-                                        </div>
-
-                                    </div>
-                                    <div className="text">
-                                        <p>ID : {item.id}</p>
-                                        <p>lang : {item.language}</p>
-                                        <p>created_at : {item.created_at}</p>
-                                        <p>updated_at : {item.updated_at}</p>
-                                        <p>default_branch : {item.default_branch}</p>
-
-                                    </div>
+                           
 
 
 
+                                
 
-                                </li>
-
-                            ))
+                            
                     }
-                </ul>
-            </>
+             </>
         )
     }
 
@@ -81,8 +67,8 @@ const About = () => {
             <div className="container-2">
                 <h1 id="start" className="content__title">Get a Repository</h1>
                 <div className="wrapper">
-                    <input className="seacrh-input" type="text" placeholder="RepositoryName" onChange={e =>getData( setInput(e.target.value))} />
-                    {/* <button className="get-btn" onClick={() => getData()}>Search</button> */}
+                    <input className="seacrh-input"  type="text" placeholder="RepositoryName" onChange={e =>  setInput(e.target.value)} />
+                    <button className="get-btn" onClick={() => getData()}>Search</button>
                     <button className="get-btn" onClick={() => {
                         setLoading(true)
                         sort()
