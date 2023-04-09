@@ -12,28 +12,28 @@ const Content = () => {
     const [input, setInput] = useState('')
     const searchName = input
 
-   
-    useEffect(()=>{
-        if(input !== ''){
+
+
+
+    useEffect(() => {
+        if (input !== '') {
             setLoading(true)
+            const getRepos = async () => {
+                setLoading(true)
+                const res = await axios.get(`https://api.github.com/users/${searchName}/repos?per_page=100`)
+                setRepository(res.data)
+                setLoading(false)
+
+
+
+            }
             getRepos()
-            setLoading(false)
-        }else{
-            setInput([])
+        } else if (input === '') {
+            setRepository([])
         }
-    },[input])
-    const getRepos = async () => {
-            
-            setLoading(true)
-            const res = await axios.get(`https://api.github.com/users/${searchName}/repos?per_page=100`)
-            setRepository(res.data)
-            setLoading(false)
-            
-       
-        
-    }
-    
- 
+    }, [input])
+
+
 
 
     const lastReposIndex = currentpage * reposPage
@@ -52,8 +52,8 @@ const Content = () => {
 
                         repository
                             .sort((a, b) => b.stargazers_count > a.stargazers_count ? 1 : -1)
-                            
-                            
+
+
                     }
                 </ul>
             </>
@@ -65,7 +65,7 @@ const Content = () => {
         <>
             <Header></Header>
             <h1 className="page">Page-2</h1>
-            
+
             <div className="container-2">
                 {repository.map(item => (
                     <img className="img" src={item.owner.avatar_url} width='180px' alt="" />

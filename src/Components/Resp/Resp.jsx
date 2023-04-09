@@ -16,7 +16,6 @@ const Resp = ({ repository, loading }) => {
                         <a className="desc__title" href={item.html_url} target="_blanck">{item.full_name} </a>
                         <p>{item.pushed_at} - last commit</p>
                         <p className="desc__stars">{item.stargazers_count} <i className="fa-solid fa-star"></i></p>
-
                         <a href={item.html_url} className="resp__title" target="_blank">перейти на репозиторий</a>
                     </div>
                 </div>

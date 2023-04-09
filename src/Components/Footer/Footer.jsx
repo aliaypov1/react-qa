@@ -2,7 +2,7 @@ const Footer = () => {
     return (
         <>
             <footer className="footer">
-                <i class="fa-brands fa-github"></i>
+                <i className="fa-brands fa-github"></i>
                 <nav>
                     <a href="#" className="footer__link">Menu</a>
                     <a href="tel:996" className="footer__link">Phone</a>

@@ -1,4 +1,4 @@
-import {BrowserRouter,Routes,Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Content from "./Components/Content/Content";
 import Header from "./Components/Header/Header";
 import './assets/styles/style.css'
@@ -9,16 +9,18 @@ import Pagination from "./Components/Pagination/Pagination";
 import Footer from "./Components/Footer/Footer";
 import About from "./Components/About/About";
 import Create from "./Components/Create/Create";
-const App = () =>{
- 
-  return(
+import Cards from "./Components/Cards/Cards";
+const App = () => {
+
+  return (
     <>
-    <BrowserRouter>
-    <Routes>
-      <Route path="/Content" element={<Content/>}/>
-      <Route path="/" element={<About/>}/>
-    </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/Content" element={<Content />} />
+          <Route path="/" element={<About />} />
+          <Route path="/repository/:repositoryName/:id" element={<Cards />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

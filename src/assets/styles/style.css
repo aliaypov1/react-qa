@@ -20,6 +20,31 @@
     border-radius: 6px;
 
 }
+.cards__content{
+    max-width: 1320px;
+    padding: 40px 20px;
+    margin:  auto;
+    border: 2px solid black;
+    margin-top: 100px;
+    border-radius: 6px;
+    background-color: var(--primary-);
+    
+}
+.cards__text{
+    font-size: 25px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    row-gap: 13px;
+    letter-spacing: 1px;
+    border: 2px solid black;
+    padding: 20px;
+    border-radius: 6px;
+    background-color: aliceblue;
+}
+.cards__sm-text{
+    color: var(--primary-);
+}
 
 .container {
     max-width: 1360px;
@@ -329,4 +354,21 @@ width: 60px;
 #burger:checked ~ .burger__nav{
 	top: 70px;
 	
+}
+.cards{
+    display: flex;
+    justify-content: space-between;
+}
+.exit{
+    
+    font-size: 40px;
+    margin-left: 20px;
+    color: #0d5bd9;
+}
+.exit:hover{
+    color: var(--dark-);
+    transition: .3s;
+}
+.details{
+    color: var(--primary-);
 }

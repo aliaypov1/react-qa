@@ -1,56 +1,42 @@
 import React from "react";
+import { NavLink, Link } from "react-router-dom"
 import { useState } from "react";
-const Create =({repository, loading})=>{
-    const [modal, setModal] = useState(false)
-    const styles={
-        display: modal ? 'block' : 'none',
-        
-    }
-    if(loading){
+
+
+const Create = ({ repository, loading }) => {
+    if (loading) {
         return <div className="loader"></div>
     }
-    return(
+
+    return (
         <>
-        <ul>
-            {
-                
-               repository.map(item =>(
-                    
-                    <li key={item.id}>
-                        <div className="content">
-                    <nav>
-                    <img src={item.owner.avatar_url} width='80px' height='40px' alt="" />
-                    </nav>
-                    <div className="desc">
-                    <a className="desc__title"  target="_blanck">{item.full_name} </a>
-                    <p>{item.pushed_at} - last commit</p>
-                    <p className="desc__stars">{item.stargazers_count} <i className="fa-solid fa-star"></i></p>
-                    
-                     <a href={item.html_url} className="resp__title"  target="_blank">перейти на репозиторий</a>
-                     <a className="details" onClick={e => setModal(prev => !prev)}>Details</a>
-                     <br />
-                     
-                     </div>
-                  
-                        </div>
-                        <div style={styles} className="text">
-                        <a className="link" target="_blanck" href={item.html_url}>{item.owner.login}</a>
-                        <p>lang : {item.language}</p>
-                        <p>created_at : {item.created_at}</p> 
-                        <p>updated_at : {item.updated_at}</p>
-                        <p>default_branch : {item.default_branch}</p>
-                       
-                        </div>
-                     
-                
-                
-                    
-                    </li>
-                    
-                ))
-            }
-        </ul>
+            <ul>
+                {
+
+                    repository.map(item => (
+
+                        <li key={item.id}>
+                            <div className="content">
+                                <nav>
+                                    <img src={item.owner.avatar_url} width='80px' height='40px' alt="" />
+                                </nav>
+                                <div className="desc">
+                                    <a className="desc__title" target="_blanck">{item.full_name} </a>
+                                    <p>{item.pushed_at} - last commit</p>
+                                    <p className="desc__stars">{item.stargazers_count} <i className="fa-solid fa-star"></i></p>
+
+                                    <a href={item.html_url} className="resp__title" target="_blank">перейти на репозиторий</a>
+                                    <Link to={`repository/${item.name}/${item.id}`} className="details">Details</Link>
+                                    <br />
+                                </div>
+                            </div>
+                        </li>
+
+                    ))
+                }
+            </ul>
         </>
     )
+
 }
 export default Create;
