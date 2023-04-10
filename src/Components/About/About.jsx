@@ -18,34 +18,33 @@ const About = () => {
         if (input === '') {
 
             const getTopRepos = async () => {
-
+                setLoading(true)
                 const res = await axios.get('https://api.github.com/search/repositories?q=stars:%3E1&sort=stars&order=desc&per_page=10')
                 setRepository(res.data.items)
+                setLoading(false)
 
             }
 
-            setTimeout(() => { getTopRepos() }, 2000)
+            getTopRepos()
 
 
 
         } else {
-            const getData = async (a, b) => {
 
-                setLoading(true)
-                const res = await axios.get(`https://api.github.com/search/repositories?q=${repos}&per_page=100`, {
-                    headers: {
-                        'Accept': 'application/vnd.github.v3+json',
-
-                    }
-                }
-
-                )
-                setRepository(res.data.items)
-                setLoading(false)
-            }
-            setTimeout(() => { getData() }, 250)
         }
+
+
+
+
+
     }, [input])
+    const getData = async () => {
+
+        setLoading(true)
+        const res = await axios.get(`https://api.github.com/search/repositories?q=${repos}&per_page=100`)
+        setRepository(res.data.items)
+        setLoading(false)
+    }
 
     const API_TOKEN = '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'
     localStorage.setItem('KEYS', API_TOKEN)
@@ -80,7 +79,7 @@ const About = () => {
                 <h1 id="start" className="content__title">Get a Repository</h1>
                 <div className="wrapper">
                     <input className="seacrh-input" type="text" placeholder="RepositoryName" onChange={e => setInput(e.target.value)} />
-                    {/* <button className="get-btn" onClick={() => getData()}>Search</button> */}
+                    <button className="get-btn" onClick={() => getData()}>Search</button>
                     <button className="get-btn" onClick={() => {
                         setLoading(true)
                         sort()

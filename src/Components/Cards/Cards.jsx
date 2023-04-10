@@ -3,21 +3,29 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 
 const Cards = () => {
+    const [loading, setLoading] = useState(false)
+
     const key = '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'
     localStorage.setItem('token', key)
     const token = localStorage.getItem('token')
     const [details, setDetails] = useState(null)
     const { id } = useParams()
     useEffect(() => {
+        setLoading(true)
         const getData = async () => {
             const res = await axios.get(`https://api.github.com/repositories/${id}`)
             const data = await res.data
             setDetails(data)
+            setLoading(false)
         }
         getData()
     }, [id])
 
+    if (loading) {
+        return <div class="spinner"></div>
 
+
+    }
     return (
         <>
             <Link to='/' className="exit"><i className="fa-solid fa-arrow-left"></i></Link>
